@@ -2,6 +2,7 @@ package data.item;
 
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +25,11 @@ public class ItemService {
         }
 
         return dto;
+    }
+
+    public String newItem(ItemDto dto) {
+        itemRepository.save(new ItemEntity(dto.getName(),dto.getAmount(),dto.getPrice(),dto.getStoragePeriod(),new Timestamp(System.currentTimeMillis())));
+
+        return "저장성공";
     }
 }

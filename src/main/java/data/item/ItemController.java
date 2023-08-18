@@ -1,9 +1,6 @@
 package data.item;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,10 @@ public class ItemController {
     @GetMapping
     private List<ItemDto> getItemList() {
         return itemService.getItemList();
+    }
+
+    @PostMapping
+    private String newItem(@RequestBody ItemDto dto) {
+        return itemService.newItem(dto);
     }
 }
